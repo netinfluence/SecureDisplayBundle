@@ -39,7 +39,7 @@ class SecureDisplayExtension extends \Twig_Extension
 		$link = "<span data-type='secure-display' data-value='" . $hash . "' data-id='" . $this->id++ . "'";
 		if($attr !== null && is_array($attr) && !empty($attr)) {
 			foreach ($attr as $key => $value) {
-				$link .= " " . $key . "='" . $value . "'";
+				$link .= " " . $key . "='" . htmlspecialchars($value, ENT_QUOTES, 'UTF-8', false) . "'";
 			}
 		}
 		$link .= ">" . $label . "</span>";
