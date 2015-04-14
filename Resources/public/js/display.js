@@ -5,7 +5,9 @@ $(document).ready(function(){
 		var id = $(this).attr("data-id");
 		var code = $(this).attr("data-value");
 		$.ajax({
-			url: Routing.generate('netinfluence_secure_display', {'id': id, 'hash' : code}),
+			method: 'post',
+			url: Routing.generate('netinfluence_secure_display'),
+			data: {'id': id, 'hash' : code},
 			success: replaceDisplay,
 			dataType: 'json'
 		})
