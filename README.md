@@ -73,12 +73,11 @@ Add this line in your layout:
 {# Custom label when JavaScript is not enabled #}
 {{ contact.phoneNumber|secureDisplay('this phone number is protected') }}
 
-{# Add html attributes #}
-{{ contact.phoneNumber|secureDisplay(null, { 'class': 'toto' }) }}
+{# Transform phone number into clicable link #}
+{{ contact.phoneNumber|secureDisplay(null, 'tel') }}    {# Can be 'tel', 'mailto', whatever you want #}
 
-{# Custom label and html attributes #}
-{{ contact.phoneNumber|secureDisplay('this red phone is protected by the red power, { 'style': 'color: red' }) }}
+{# Custom html attributes #}
+{{ contact.phoneNumber|secureDisplay(null, null, { 'style': 'color: red' }) }}
 ```
-Of course, this example use a phone number, but you can use an email too.
 
-## Do not use this with someting else than an email or a phone number. It will be fixed soon.
+Of course, you cam mix any of these tree parameters as you want.
