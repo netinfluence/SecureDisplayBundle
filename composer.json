@@ -1,0 +1,24 @@
+{
+	"name":         "netinfluence/secure-display-bundle",
+	"description":  "NetinfluenceSecureDisplayBundle is a small simple bundle which protect emails and phone numbers behine encryption and JavaScript",
+	"keywords":     ["netinfluence", "secure", "phone", "email"],
+	"type":         "symfony-bundle",
+	"license":      "MIT",
+	"authors": [
+		{
+			"name":     "Netinfluence",
+			"email":    "ask@netinfluence.ch",
+			"homepage": "http://netinfluence.ch"
+		}
+	],
+	"require": {
+		"php":                               ">=5.3.3",
+		"symfony/framework-bundle":          "~2.3",
+		"symfony/twig-bundle":               "~2.3",
+		"friendsofsymfony/jsrouting-bundle": "~1.5"
+	},
+	"autoload": {
+		"psr-0": { "Netinfluence\\SecureDisplayBundle": "" }
+	},
+	"target-dir": "Netinfluence/SecureDisplayBundle"
+}

@@ -1,0 +1,5 @@
+netinfluence_secure_display:
+    path:     /netinfluence_secure_display/{id}/{hash}
+    defaults: { _controller: "NetinfluenceSecureDisplayBundle:Display:decrypt" }
+    options:
+        expose: true
