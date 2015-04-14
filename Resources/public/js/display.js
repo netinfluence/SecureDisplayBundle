@@ -15,15 +15,19 @@ $(document).ready(function(){
 });
 
 function replaceDisplay(response) {
-	var action = "tel:";
-	if(response.value.indexOf('@') > 0) {
-		action = "mailto:";
-	}
-	var link = $("<a href='" + action + response.value + "'>" + response.value + "</a>");
 	var origin = $("span[data-id=" + response.key + "]");
+	var action = origin.attr("data-action");
 	var attributes = origin.prop("attributes");
+
+	var link = "";
+	if(action !== undefined) {
+		link = $("<a href='" + action + ':' + response.value + "'>" + response.value + "</a>");
+	}else{
+		link = $("<span>" + response.value + "</span>");
+	}
+
 	$.each(attributes, function() {
-		if(this.name != "data-type" && this.name != "data-id" && this.name != "data-value") {
+		if(this.name != "data-type" && this.name != "data-id" && this.name != "data-value" && this.name != 'data-action') {
 			link.attr(this.name, this.value);
 		}
 	});

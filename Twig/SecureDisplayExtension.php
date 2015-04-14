@@ -23,7 +23,7 @@ class SecureDisplayExtension extends \Twig_Extension
 		);
 	}
 
-	public function hashFilter($number, $label = null, array $attr = null)
+	public function hashFilter($number, $label = null, $action = null, array $attr = null)
 	{
 		// Encrypt the value
 		$hash = $this->encrypter->encrypt($number);
@@ -37,6 +37,9 @@ class SecureDisplayExtension extends \Twig_Extension
 
 		// Generate the span with the given optional attributes
 		$link = "<span data-type='secure-display' data-value='" . $hash . "' data-id='" . $this->id++ . "'";
+		if($action !== null) {
+			$link .= " data-action='" . $action . "'";
+		}
 		if($attr !== null && is_array($attr) && !empty($attr)) {
 			foreach ($attr as $key => $value) {
 				$link .= " " . $key . "='" . htmlspecialchars($value, ENT_QUOTES, 'UTF-8', false) . "'";
