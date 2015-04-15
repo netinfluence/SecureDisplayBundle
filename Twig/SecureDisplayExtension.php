@@ -16,10 +16,16 @@ class SecureDisplayExtension extends \Twig_Extension
      */
 	private $id;
 
-	public function __construct(Encrypter $encrypter)
+    /**
+     * @var string
+     */
+    private $template;
+
+	public function __construct(Encrypter $encrypter, $template)
 	{
 		$this->encrypter = $encrypter;
 		$this->id = 1;
+        $this->template = $template;
 	}
 	
 	public function getFilters()
@@ -37,7 +43,7 @@ class SecureDisplayExtension extends \Twig_Extension
 		// Encrypt the value
 		$hash = $this->encrypter->encrypt($number);
 
-        return $twig->render('NetinfluenceSecureDisplayBundle::secure_display.html.twig', array(
+        return $twig->render($this->template, array(
             'action' => $action,
             'attr'  => $attr,
             'hash'  => $hash,

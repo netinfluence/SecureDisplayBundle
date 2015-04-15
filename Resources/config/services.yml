@@ -3,6 +3,7 @@ services:
         class: Netinfluence\SecureDisplayBundle\Twig\SecureDisplayExtension
         arguments:
             - "@encrypter"
+            - "%netinfluence_secure_display.template%"
         tags:
             - { name: twig.extension }
     encrypter:

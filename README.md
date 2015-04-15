@@ -41,6 +41,8 @@ class AppKernel extends Kernel
 # app/config/config.yml
 netinfluence_secure_display:
     key: "my_super_random_secure_key"
+    # Optionally, you can customize used template here
+    template: 'NetinfluenceSecureDisplayBundle::secure_display.html.twig'
 ```
 
 ### Step 4: Routing

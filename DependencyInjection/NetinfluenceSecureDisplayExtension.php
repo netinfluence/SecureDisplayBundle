@@ -23,6 +23,7 @@ class NetinfluenceSecureDisplayExtension extends Extension
 		$config = $this->processConfiguration($configuration, $configs);
 
 		$container->setParameter('netinfluence_secure_display.key', $config['key']);
+		$container->setParameter('netinfluence_secure_display.template', $config['template']);
 
 		$loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 		$loader->load('services.yml');

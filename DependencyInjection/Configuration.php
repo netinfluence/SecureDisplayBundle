@@ -23,6 +23,9 @@ class Configuration implements ConfigurationInterface
 		$rootNode
 			->children()
 				->scalarNode('key')->end()
+                ->scalarNode('template')
+                    ->defaultValue('NetinfluenceSecureDisplayBundle::secure_display.html.twig')
+                ->end()
 			->end()
 		->end();
 
