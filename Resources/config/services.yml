@@ -2,7 +2,6 @@ services:
     netinfluence.twig.secure_display_extension:
         class: Netinfluence\SecureDisplayBundle\Twig\SecureDisplayExtension
         arguments:
-            - "@translator"
             - "@encrypter"
         tags:
             - { name: twig.extension }

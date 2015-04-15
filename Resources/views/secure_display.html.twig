@@ -7,5 +7,5 @@
         {% for key, value in attr %}
             {{ key }}="{{ value|e('html_attr') }}"
         {% endfor %}
-    >{{ label }}</span>
+    >{{ label|trans }}</span>
 {% endspaceless %}

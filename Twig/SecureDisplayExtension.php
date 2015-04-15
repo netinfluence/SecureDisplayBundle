@@ -6,13 +6,18 @@ use Netinfluence\SecureDisplayBundle\Services\Encrypter;
 
 class SecureDisplayExtension extends \Twig_Extension
 {
-	private $translator;
+    /**
+     * @var Encrypter
+     */
 	private $encrypter;
+
+    /**
+     * @var int
+     */
 	private $id;
 
-	public function __construct($translator, Encrypter $encrypter)
+	public function __construct(Encrypter $encrypter)
 	{
-		$this->translator = $translator;
 		$this->encrypter = $encrypter;
 		$this->id = 1;
 	}
@@ -24,20 +29,13 @@ class SecureDisplayExtension extends \Twig_Extension
                 'is_safe' => array('html'),
                 'needs_environment' => true
             )),
-		);
+        );
 	}
 
-	public function hashFilter(\Twig_Environment $twig, $number, $label = null, $action = null, array $attr = [])
+	public function hashFilter(\Twig_Environment $twig, $number, $label = 'secure_display.fail_label', $action = null, array $attr = array())
 	{
 		// Encrypt the value
 		$hash = $this->encrypter->encrypt($number);
-
-		// Translate the given label or use default one
-		if($label) {
-			$label = $this->translator->trans($label);
-		}else{
-			$label = "This value is protected";
-		}
 
         return $twig->render('NetinfluenceSecureDisplayBundle::secure_display.html.twig', array(
             'action' => $action,
@@ -53,4 +51,3 @@ class SecureDisplayExtension extends \Twig_Extension
 		return 'secure_display_extension';
 	}
 }
-
