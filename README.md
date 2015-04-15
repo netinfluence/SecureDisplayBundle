@@ -1,6 +1,8 @@
 # SecureDisplayBundle
 NetinfluenceSecureDisplayBundle is a small simple bundle which protect emails and phone numbers behine encryption and JavaScript.
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/6cc91472-5916-44b7-b5f7-886e6105e8bd/big.png)](https://insight.sensiolabs.com/projects/6cc91472-5916-44b7-b5f7-886e6105e8bd)
+
 ## Requirements
 Before installing this bundle, you need to have a working installation of [FOSJsRoutingBundle](https://github.com/FriendsOfSymfony/FOSJsRoutingBundle).
 
