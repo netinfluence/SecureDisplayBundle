@@ -1,0 +1,11 @@
+{% spaceless %}
+    <span
+        data-type="secure-display"
+        data-value="{{ hash }}"
+        data-id=""{{ id }}
+        {% if action is not null %} data-action="{{ action }}" {% endif %}
+        {% for key, value in attr %}
+            {{ key }}="{{ value|e('html_attr') }}"
+        {% endfor %}
+    >{{ label }}</span>
+{% endspaceless %}

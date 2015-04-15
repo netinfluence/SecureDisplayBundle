@@ -3,6 +3,7 @@
 namespace Netinfluence\SecureDisplayBundle\Twig;
 
 use Netinfluence\SecureDisplayBundle\Services\Encrypter;
+
 class SecureDisplayExtension extends \Twig_Extension
 {
 	private $translator;
@@ -19,11 +20,14 @@ class SecureDisplayExtension extends \Twig_Extension
 	public function getFilters()
 	{
 		return array(
-			new \Twig_SimpleFilter('secureDisplay', array($this, 'hashFilter'), array('is_safe' => array('html'))),
+			new \Twig_SimpleFilter('secureDisplay', array($this, 'hashFilter'), array(
+                'is_safe' => array('html'),
+                'needs_environment' => true
+            )),
 		);
 	}
 
-	public function hashFilter($number, $label = null, $action = null, array $attr = null)
+	public function hashFilter(\Twig_Environment $twig, $number, $label = null, $action = null, array $attr = [])
 	{
 		// Encrypt the value
 		$hash = $this->encrypter->encrypt($number);
@@ -35,18 +39,13 @@ class SecureDisplayExtension extends \Twig_Extension
 			$label = "This value is protected";
 		}
 
-		// Generate the span with the given optional attributes
-		$link = "<span data-type='secure-display' data-value='" . $hash . "' data-id='" . $this->id++ . "'";
-		if($action !== null) {
-			$link .= " data-action='" . $action . "'";
-		}
-		if($attr !== null && is_array($attr) && !empty($attr)) {
-			foreach ($attr as $key => $value) {
-				$link .= " " . $key . "='" . htmlspecialchars($value, ENT_QUOTES, 'UTF-8', false) . "'";
-			}
-		}
-		$link .= ">" . $label . "</span>";
-		return $link;
+        return $twig->render('NetinfluenceSecureDisplayBundle::secure_display.html.twig', array(
+            'action' => $action,
+            'attr'  => $attr,
+            'hash'  => $hash,
+            'id'    => $this->id++,
+            'label' => $label
+        ));
 	}
 
 	public function getName()
