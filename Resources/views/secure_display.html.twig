@@ -2,7 +2,7 @@
     <span
         data-type="secure-display"
         data-value="{{ hash }}"
-        data-id=""{{ id }}
+        data-id="{{ id }}"
         {% if action is not null %} data-action="{{ action }}" {% endif %}
         {% for key, value in attr %}
             {{ key }}="{{ value|e('html_attr') }}"
