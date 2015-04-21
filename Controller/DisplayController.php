@@ -10,11 +10,14 @@ class DisplayController extends Controller
 {
 	public function decryptAction(Request $request)
 	{
-		$id = $request->request->get('id');
-		$hash = $request->request->get('hash');
 		$encrypter = $this->get('encrypter');
-		$value = $encrypter->decrypt($hash);
-		$result = array('key' => $id, 'value' => $value);
-		return new Response(json_encode($result));
+
+		$data = $request->request->get('keys');
+		$results = array();
+		
+		foreach ($data as $key => $value) {
+			$results[$key] = $encrypter->decrypt($value);
+		}
+		return new Response(json_encode($results));
 	}
 }

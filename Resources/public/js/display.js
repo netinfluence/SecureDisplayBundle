@@ -1,29 +1,37 @@
 $(document).ready(function(){
 	var links = $("span[data-type=secure-display]");
+	var data = {keys: {}};
 
 	links.each(function(){
 		var id = $(this).attr("data-id");
 		var code = $(this).attr("data-value");
-		$.ajax({
-			method: 'post',
-			url: Routing.generate('netinfluence_secure_display'),
-			data: {'id': id, 'hash' : code},
-			success: replaceDisplay,
-			dataType: 'json'
-		})
+		data.keys[id] = code;
+	});
+	$.ajax({
+		method: 'post',
+		url: Routing.generate('netinfluence_secure_display'),
+		data: data,
+		success: replaceAll,
+		dataType: 'json'
 	});
 });
 
-function replaceDisplay(response) {
-	var origin = $("span[data-id=" + response.key + "]");
+function replaceAll(response) {
+	for(var key in response) {
+		replaceDisplay(key, response[key]);
+	}
+}
+
+function replaceDisplay(key, value) {
+	var origin = $("span[data-id=" + key + "]");
 	var action = origin.attr("data-action");
 	var attributes = origin.prop("attributes");
 
 	var link = "";
 	if(action !== undefined) {
-		link = $("<a href='" + action + ':' + response.value + "'>" + response.value + "</a>");
+		link = $("<a href='" + action + ':' + value + "'>" + value + "</a>");
 	}else{
-		link = $("<span>" + response.value + "</span>");
+		link = $("<span>" + value + "</span>");
 	}
 
 	$.each(attributes, function() {
