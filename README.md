@@ -2,6 +2,8 @@
 NetinfluenceSecureDisplayBundle is a small simple bundle which protect emails, phone numbers and any text you want from spam bot, by using encryption, ajax and JavaScript.
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/6cc91472-5916-44b7-b5f7-886e6105e8bd/big.png)](https://insight.sensiolabs.com/projects/6cc91472-5916-44b7-b5f7-886e6105e8bd)
+[![knpbundles.com](http://knpbundles.com/netinfluence/SecureDisplayBundle/badge)](http://knpbundles.com/netinfluence/SecureDisplayBundle)
+
 
 ## Requirements
 Before installing this bundle, you need to have a working installation of [FOSJsRoutingBundle](https://github.com/FriendsOfSymfony/FOSJsRoutingBundle).
