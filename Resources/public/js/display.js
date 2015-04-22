@@ -2,18 +2,21 @@ $(document).ready(function(){
 	var links = $("span[data-type=secure-display]");
 	var data = {keys: {}};
 
-	links.each(function(){
-		var id = $(this).attr("data-id");
-		var code = $(this).attr("data-value");
-		data.keys[id] = code;
-	});
-	$.ajax({
-		method: 'post',
-		url: Routing.generate('netinfluence_secure_display'),
-		data: data,
-		success: replaceAll,
-		dataType: 'json'
-	});
+	if(links.length > 0) {
+		links.each(function(){
+			var id = $(this).attr("data-id");
+			var code = $(this).attr("data-value");
+			data.keys[id] = code;
+		});
+
+		$.ajax({
+			method: 'post',
+			url: Routing.generate('netinfluence_secure_display'),
+			data: data,
+			success: replaceAll,
+			dataType: 'json'
+		});
+	}
 });
 
 function replaceAll(response) {
