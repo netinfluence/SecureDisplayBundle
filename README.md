@@ -1,5 +1,5 @@
 # SecureDisplayBundle
-NetinfluenceSecureDisplayBundle is a small simple bundle which protect emails and phone numbers behine encryption and JavaScript.
+NetinfluenceSecureDisplayBundle is a small simple bundle which protect emails, phone numbers and any text you want from spam bot, by using encryption, ajax and JavaScript.
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/6cc91472-5916-44b7-b5f7-886e6105e8bd/big.png)](https://insight.sensiolabs.com/projects/6cc91472-5916-44b7-b5f7-886e6105e8bd)
 
@@ -21,6 +21,7 @@ First you need to add `netinfluence/secure-display-bundle` to `composer.json`:
 note: replace `dev-master` with the last version of this bundle.
 
 ### Step 2: AppKernel
+Register the bundle into the Symfony AppKernel
 ```php
 // app/AppKernel.php
 
@@ -39,15 +40,18 @@ class AppKernel extends Kernel
 ```
 
 ### Step 3: Config
+Define the configuration of the bundle into the config file
 ```yaml
 # app/config/config.yml
 netinfluence_secure_display:
+    # Required, key used to encrypt data
     key: "my_super_random_secure_key"
-    # Optionally, you can customize used template here
+    # Optional, you can customize used template here
     template: 'NetinfluenceSecureDisplayBundle::secure_display.html.twig'
 ```
 
 ### Step 4: Routing
+Register the routing of the bundle to be able to perform ajax requests
 ```yaml
 # app/config/routing.yml
 netinfluence_secure_display:
@@ -57,7 +61,7 @@ netinfluence_secure_display:
 
 
 ### Step 5: Assets
-Publish assets
+Publish the assets to be able to use the javascript file
 ```sh
 $ php app/console assets:install --symlink web
 ```
@@ -67,21 +71,38 @@ Add this line in your layout:
 <script src="{{ asset('bundles/netinfluencesecuredisplay/js/display.js') }}"></script>
 ```
 
+## Declaration
+```twig
+{{ some.data|secureDisplay(label, action, attributes) }}
+```
+parameters
+- label: optional
+   - type: string
+   - value: text to display if the javascript is not enabled
+- action: optional
+   - type: string
+   - value: action to append before the link
+- attributes: optional
+   - type: array
+   - value: html attributes to add to the text
+
 ## Usage
 ```twig
-<h4>Here is my phone number</h4>
+
+<h4>Here are my personal informations</h4>
 
 {# Default usage #}
-{{ contact.phoneNumber|secureDisplay }}
+<p>My name is : {{ contact.name|secureDisplay }}</p>
 
 {# Custom label when JavaScript is not enabled #}
-{{ contact.phoneNumber|secureDisplay('this phone number is protected') }}
+<p>You can find my at : {{ contact.address|secureDisplay('this addres is protected') }}</p>
 
 {# Transform phone number into clicable link #}
-{{ contact.phoneNumber|secureDisplay(null, 'tel') }}    {# Can be 'tel', 'mailto', whatever you want #}
+{# Can be 'tel', 'mailto', whatever you want #}
+<p>My phone number is : {{ contact.phoneNumber|secureDisplay(null, 'tel') }}</p>
 
 {# Custom html attributes #}
-{{ contact.phoneNumber|secureDisplay(null, null, { 'style': 'color: red' }) }}
+<p>My favorite color is : {{ contact.color|secureDisplay(null, null, { 'style': 'color: red' }) }}</p>
 ```
 
-Of course, you cam mix any of these tree parameters as you want.
+Of course, you can mix any of these tree parameters as you want.
