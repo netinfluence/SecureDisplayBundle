@@ -12,7 +12,7 @@ class DisplayController extends Controller
 	{
 		$encrypter = $this->get('encrypter');
 
-		$data = $request->request->get('keys');
+		$data = $request->request->get('keys', array());
 		$results = array();
 		
 		foreach ($data as $key => $value) {
