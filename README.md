@@ -3,6 +3,7 @@ NetinfluenceSecureDisplayBundle is a small simple bundle which protect emails, p
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/6cc91472-5916-44b7-b5f7-886e6105e8bd/big.png)](https://insight.sensiolabs.com/projects/6cc91472-5916-44b7-b5f7-886e6105e8bd)
 [![knpbundles.com](http://knpbundles.com/netinfluence/SecureDisplayBundle/badge)](http://knpbundles.com/netinfluence/SecureDisplayBundle)
+[![Build Status](https://travis-ci.org/netinfluence/SecureDisplayBundle.svg?branch=master)](https://travis-ci.org/netinfluence/SecureDisplayBundle)
 
 
 ## Requirements
