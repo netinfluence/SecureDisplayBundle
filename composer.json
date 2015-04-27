@@ -17,6 +17,10 @@
 		"symfony/twig-bundle":               "~2.3",
 		"friendsofsymfony/jsrouting-bundle": "~1.5"
 	},
+	"require-dev": {
+		"phpunit/phpunit": "~4",
+		"phake/phake": "~1"
+	},
 	"autoload": {
 		"psr-0": { "Netinfluence\\SecureDisplayBundle": "" }
 	},
