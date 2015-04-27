@@ -43,8 +43,7 @@ class EncrypterTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function tearDown()
 	{
-		$this->sessionEmpty = null;
-		$this->sessionExists = null;
+		$this->session = null;
 	}
 
 	/**
