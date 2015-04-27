@@ -2,17 +2,25 @@
 
 namespace Netinfluence\SecureDisplayBundle\Services;
 
+use Symfony\Component\HttpFoundation\Session\Session;
 class Encrypter
 {
+	const SESSION_IV_KEY = 'encrypter-iv';
+	private $session;
 	private $method;
 	private $key;
 	private $iv;
 
-	public function __construct($key)
+	public function __construct(Session $session, $key)
 	{
-		// Change IV each minute
-		$time = round(time()/60)*60;
-		$this->iv = substr(hash('sha256', $time), 0, 16);
+		$iv = $session->get(self::SESSION_IV_KEY, null);
+
+		if($iv !== null) {
+			$this->iv = $iv;
+		}else{
+			$this->iv = openssl_random_pseudo_bytes(16);
+			$session->set(self::SESSION_IV_KEY, $this->iv);
+		}
 
 		$this->method = "AES-256-CBC";
 		$this->key = hash('sha256', $key);

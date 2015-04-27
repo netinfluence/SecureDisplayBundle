@@ -9,4 +9,5 @@ services:
     encrypter:
         class: Netinfluence\SecureDisplayBundle\Services\Encrypter
         arguments:
+            - "@session"
             - "%netinfluence_secure_display.key%"
