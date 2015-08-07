@@ -84,7 +84,7 @@ parameters
    - value: text to display if the javascript is not enabled
 - action: optional
    - type: string
-   - value: action to append before the link
+   - value: action to append before the link (like "__tel__:012 345 67" or "__mailto__:john@doe.com")
 - attributes: optional
    - type: array
    - value: html attributes to add to the text
@@ -98,7 +98,7 @@ parameters
 <p>My name is : {{ contact.name|secureDisplay }}</p>
 
 {# Custom label when JavaScript is not enabled #}
-<p>You can find my at : {{ contact.address|secureDisplay('this addres is protected') }}</p>
+<p>You can find me at : {{ contact.address|secureDisplay('this address is protected') }}</p>
 
 {# Transform phone number into clicable link #}
 {# Can be 'tel', 'mailto', whatever you want #}
