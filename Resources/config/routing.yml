@@ -2,6 +2,6 @@ netinfluence_secure_display:
     path:     /netinfluence_secure_display
     defaults: { _controller: "NetinfluenceSecureDisplayBundle:Display:decrypt" }
     requirements:
-        _method:  POST
+        methods:  POST
     options:
         expose: true
