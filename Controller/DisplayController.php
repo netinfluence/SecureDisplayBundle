@@ -19,7 +19,7 @@ class DisplayController extends Controller
 		$encrypter = $this->get('encrypter');
 
 		// Get data to decrypt
-		$data = $request->request->get('keys', array());
+		$data = $request->request->get('keys', []);
 
 		// Prepare results
 		$results = array();
