@@ -3,6 +3,7 @@
 namespace Netinfluence\SecureDisplayBundle\Tests\Services;
 
 use Netinfluence\SecureDisplayBundle\Services\Encrypter;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class EncrypterTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,7 +15,7 @@ class EncrypterTest extends \PHPUnit_Framework_TestCase
 
 	/**
 	 * 
-	 * @var Symfony\Component\HttpFoundation\Session\Session
+	 * @var Session
 	 */
 	private $session;
 
