@@ -3,7 +3,7 @@
 namespace Netinfluence\SecureDisplayBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class DisplayController extends Controller
@@ -30,6 +30,6 @@ class DisplayController extends Controller
 		}
 
 		// Return json formated array of results
-		return new Response(json_encode($results));
+		return new JsonResponse($results);
 	}
 }
