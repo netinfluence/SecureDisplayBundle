@@ -2,6 +2,7 @@
 
 namespace Netinfluence\SecureDisplayBundle\Controller;
 
+use Netinfluence\SecureDisplayBundle\Services\Encrypter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -9,14 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 class DisplayController extends Controller
 {
 	/**
-	 * 
 	 * @param Request $request
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
 	public function decryptAction(Request $request)
 	{
 		// Get encryption service
-		$encrypter = $this->get('encrypter');
+		$encrypter = $this->get(Encrypter::class);
 
 		// Get data to decrypt
 		$data = $request->request->get('keys', []);

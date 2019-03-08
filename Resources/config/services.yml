@@ -1,13 +1,15 @@
 services:
-    netinfluence.twig.secure_display_extension:
+    Netinfluence\SecureDisplayBundle\Twig\SecureDisplayExtension:
         class: Netinfluence\SecureDisplayBundle\Twig\SecureDisplayExtension
+        public: true
         arguments:
-            - "@encrypter"
+            - "@Netinfluence\SecureDisplayBundle\Services\Encrypter"
             - "%netinfluence_secure_display.template%"
         tags:
             - { name: twig.extension }
-    encrypter:
+    Netinfluence\SecureDisplayBundle\Services\Encrypter:
         class: Netinfluence\SecureDisplayBundle\Services\Encrypter
+        public: false
         arguments:
             - "@session"
             - "%netinfluence_secure_display.key%"
