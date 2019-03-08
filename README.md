@@ -12,7 +12,7 @@ NetinfluenceSecureDisplayBundle is a small simple bundle which protect emails, p
 Before installing this bundle, you need to have a working installation of [FOSJsRoutingBundle](https://github.com/FriendsOfSymfony/FOSJsRoutingBundle).
 
 Version 1.x is compatible with Symfony 2 _(2.3 - 2.8)_, version 2.x are compatible with Symfony 2.8 and 3.x  
-Code is tested on PHP 5.3 to PHP 7.3
+Code is tested on PHP 5.6 and PHP 7.0 to PHP 7.3
 
 ## Installation
 
