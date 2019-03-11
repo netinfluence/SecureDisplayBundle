@@ -9,7 +9,7 @@ services:
             - { name: twig.extension }
     Netinfluence\SecureDisplayBundle\Services\Encrypter:
         class: Netinfluence\SecureDisplayBundle\Services\Encrypter
-        public: false
+        public: true
         arguments:
             - "@session"
             - "%netinfluence_secure_display.key%"
